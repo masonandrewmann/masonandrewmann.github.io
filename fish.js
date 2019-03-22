@@ -29,6 +29,7 @@ var bubbleX = new Array(bubbleDensity);
 var bubbleY = new Array(bubbleDensity);
 var bubbleSize = new Array(bubbleDensity);
 var bubbleSpd = new Array(bubbleDensity);
+var bubbleEnd = new Array(bubbleDensity);
 
 // top left text arrays
 var textNum = 20;
@@ -49,6 +50,7 @@ function setup(){
   bubbleY[i] = 800.0;
   bubbleSize[i] = random(20, 40);
   bubbleSpd[i] = random(1, 5);
+  bubbleEnd[i] = random(250, 500);
   }
 
   for(var i = 0; i < textNum; i++){
@@ -81,7 +83,10 @@ function draw(){
     ellipse(bubbleX[i], bubbleY[i], bubbleSize[i], bubbleSize[i]);
     bubbleY[i] = bubbleY[i] - bubbleSpd[i];
     var end = round(random (200, 500));
-    if(bubbleY[i] < end) bubbleY[i] = 1000;
+    if(bubbleY[i] < bubbleEnd[i]) {
+      bubbleY[i] = 1000;
+      bubbleEnd[i] = random(250, 500);
+    }
   }
 }
 
